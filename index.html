@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>AI Joke Tool</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			text-align: center;
+		}
+
+		h1 {
+			font-size: 3em;
+			margin-bottom: 1em;
+		}
+
+		button {
+			background-color: #4CAF50;
+			color: white;
+			padding: 12px 20px;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+			font-size: 1.2em;
+			margin-bottom: 1em;
+		}
+
+		input[type="text"] {
+			padding: 12px 20px;
+			border: none;
+			border-radius: 4px;
+			box-sizing: border-box;
+			font-size: 1.2em;
+			margin-bottom: 1em;
+		}
+	</style>
+</head>
+<body>
+	<h1>AI Joke Tool</h1>
+
+	<button id="generate-btn">Generate Joke</button>
+
+	<p id="joke-output"></p>
+
+	<input type="text" id="user-joke" placeholder="Enter your own joke">
+
+	<button id="submit-btn">Submit Joke</button>
+
+	<script>
+		// Define an array of jokes
+		const jokes = [
+			"Why did the AI cross the road? To get to the other side of the dataset!",
+			"Why was the computer cold? It left its Windows open!",
+			"What do you call a group of AI robots? A circuit party!",
+			"Why did the AI robot go on a diet? It wanted to reduce its processing weight!",
+			"Why did the machine learning algorithm feel bad? It had a low accuracy rate!",
+		];
+
+		// Get references to the HTML elements
+		const generateBtn = document.getElementById('generate-btn');
+		const jokeOutput = document.getElementById('joke-output');
+		const submitBtn = document.getElementById('submit-btn');
+		const userJoke = document.getElementById('user-joke');
+
+		// Event listener for the generate button
+		generateBtn.addEventListener('click', function() {
+			// Generate a random joke from the array
+			const randomJoke = jokes[Math.floor(Math.random() * jokes.length)];
+
+			// Display the joke in the output element
+			jokeOutput.textContent = randomJoke;
+		});
+
+		// Event listener for the submit button
+		submitBtn.addEventListener('click', function() {
+			// Get the user's joke from the input element
+			const userJokeValue = userJoke.value.trim();
+
+			// Add the user's joke to the array
+			if (userJokeValue !== '') {
+				jokes.push(userJokeValue);
+
+				// Clear the input element
+				userJoke.value = '';
+			}
+		});
+	</script>
+</body>
+</html>
